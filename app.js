@@ -12,11 +12,31 @@ console.log('connection established')
 
 // SELECTING DATA
 
-var q = 'SELECT * FROM users ';
+// var q = 'SELECT * FROM users ';
+// connection.query(q, function (error, results, fields) {
+//   if (error) throw error;
+//   console.log(results);
+// });
+
+
+ //var q = 'SELECT Date_format(created_at, "%M %D %Y") as earliest_date FROM users order by created_at limit 1';
+ //var q = 'SELECT email, created_at FROM users order by created_at limit 1'
+//var q = 'SELECT Date_format(created_at, "%M") as month, count(*) as count FROM users group by month order by month desc'
+//var q = 'SELECT count(*) as yahoo_users from users where email like "%@yahoo.com%"';
+var q  = ''
+
+
+//var q = 'SELECT DATE_FORMAT(MIN(created_at), "%M %D %Y") as earliest_date  FROM users';
+
+//var q = 'SELECT * FROM   users  WHERE  created_at = (SELECT Min(created_at) FROM   users)';
+
 connection.query(q, function (error, results, fields) {
   if (error) throw error;
   console.log(results);
 });
+
+
+
 
 // var q = 'SELECT count(*) as count FROM users ';
 // connection.query(q, function (error, results, fields) {
@@ -67,21 +87,21 @@ connection.query(q, function (error, results, fields) {
 
 // INSERTING LOTS OF DATA!!!!=============================
 
-var data = [];
-for(var i = 0; i < 500; i++){
-    data.push([
-        faker.internet.email(),
-        faker.date.past()
-    ]);
-}
-console.log(data);
+// var data = [];
+// for(var i = 0; i < 500; i++){
+//     data.push([
+//         faker.internet.email(),
+//         faker.date.past()
+//     ]);
+// }
+// console.log(data);
 
-var q = 'INSERT INTO users (email, created_at) VALUES ?';
+// var q = 'INSERT INTO users (email, created_at) VALUES ?';
 
-connection.query(q, [data], function(err, result) {
-  console.log(err);
-  console.log(result);
-});
+// connection.query(q, [data], function(err, result) {
+//   console.log(err);
+//   console.log(result);
+// });
 
 // connection.end();
 
